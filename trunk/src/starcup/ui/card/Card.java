@@ -11,8 +11,7 @@ import starcup.ui.desk.PlayerDesk;
  *
  * @author Akira.Pan
  */
-public class Card extends JLabel {
-
+public class Card extends JLabel implements starcup.core.component.Card {
     public Card() {
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(starcup.StarCupApp.class).getContext().getResourceMap(PlayerDesk.class);
         this.setIcon(resourceMap.getIcon("cardImage.icon")); // NOI18N
@@ -22,7 +21,6 @@ public class Card extends JLabel {
         this.setName("cardImage"); // NOI18N
         this.setPreferredSize(new java.awt.Dimension(127, 175));
     }
-
     public JLabel createImage() {
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(starcup.StarCupApp.class).getContext().getResourceMap(PlayerDesk.class);
         JLabel newImage = new javax.swing.JLabel();

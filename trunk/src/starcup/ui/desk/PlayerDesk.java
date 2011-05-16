@@ -10,8 +10,7 @@
  */
 package starcup.ui.desk;
 
-
-import javax.swing.JLabel;
+import starcup.core.game.Player;
 import starcup.ui.card.Card;
 
 /**
@@ -20,17 +19,27 @@ import starcup.ui.card.Card;
  */
 public class PlayerDesk extends javax.swing.JPanel {
 
+    private Player player;
+
     /** Creates new form PlayerDesk */
     public PlayerDesk() {
         initComponents();
-        int countCard = 5;
+    }
 
-        for (int i = 0; i < countCard; i++) {
-            JLabel tempImage = new Card();
-            jPanel2.add(tempImage);
+    public void display() {
+        for (int i = 0; i < player.getCardLimit(); i++) {
+            Card card = new Card();
+            jPanel2.add(card);
+            this.revalidate();
         }
-        jPanel2.repaint();
-//                    this.repaint();
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     /** This method is called from within the constructor to
