@@ -55,18 +55,21 @@ public class PlayerDesk extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
 
+        cardImage.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(starcup.StarCupApp.class).getContext().getResourceMap(PlayerDesk.class);
         cardImage.setIcon(resourceMap.getIcon("cardImage.icon")); // NOI18N
-        cardImage.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        cardImage.setMaximumSize(new java.awt.Dimension(127, 175));
-        cardImage.setMinimumSize(new java.awt.Dimension(127, 175));
+        cardImage.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         cardImage.setName("cardImage"); // NOI18N
-        cardImage.setPreferredSize(new java.awt.Dimension(127, 175));
+        cardImage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cardImageMouseClicked(evt);
+            }
+        });
 
-        setMaximumSize(new java.awt.Dimension(800, 400));
-        setMinimumSize(new java.awt.Dimension(800, 400));
+        setMaximumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(800, 600));
         setName("Form"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(800, 400));
+        setPreferredSize(new java.awt.Dimension(800, 600));
         setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         jPanel1.setBackground(resourceMap.getColor("jPanel1.background")); // NOI18N
@@ -78,13 +81,17 @@ public class PlayerDesk extends javax.swing.JPanel {
         add(jPanel1);
 
         jPanel2.setBackground(resourceMap.getColor("jPanel2.background")); // NOI18N
-        jPanel2.setMaximumSize(new java.awt.Dimension(800, 200));
-        jPanel2.setMinimumSize(new java.awt.Dimension(800, 200));
+        jPanel2.setMaximumSize(new java.awt.Dimension(800, 400));
+        jPanel2.setMinimumSize(new java.awt.Dimension(800, 400));
         jPanel2.setName("jPanel2"); // NOI18N
-        jPanel2.setPreferredSize(new java.awt.Dimension(800, 200));
-        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        jPanel2.setPreferredSize(new java.awt.Dimension(800, 400));
         add(jPanel2);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cardImageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cardImageMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cardImageMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel cardImage;
     private javax.swing.JPanel jPanel1;

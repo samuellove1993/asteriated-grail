@@ -129,9 +129,13 @@ public class StarCupView extends FrameView {
         mainPanel.setPreferredSize(new java.awt.Dimension(800, 800));
         mainPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 0));
 
+        playerDesk1.setMaximumSize(new java.awt.Dimension(800, 500));
+        playerDesk1.setMinimumSize(new java.awt.Dimension(800, 500));
         playerDesk1.setName("playerDesk1"); // NOI18N
+        playerDesk1.setPreferredSize(new java.awt.Dimension(800, 500));
         mainPanel.add(playerDesk1);
 
+        menuBar.setMaximumSize(new java.awt.Dimension(800, 32769));
         menuBar.setName("menuBar"); // NOI18N
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(starcup.StarCupApp.class).getContext().getResourceMap(StarCupView.class);
@@ -140,7 +144,6 @@ public class StarCupView extends FrameView {
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(starcup.StarCupApp.class).getContext().getActionMap(StarCupView.class, this);
         jMenuItem1.setAction(actionMap.get("createNewGame")); // NOI18N
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setText(resourceMap.getString("jMenuItem1.text")); // NOI18N
         jMenuItem1.setName("jMenuItem1"); // NOI18N
         fileMenu.add(jMenuItem1);
@@ -164,6 +167,8 @@ public class StarCupView extends FrameView {
 
         menuBar.add(helpMenu);
 
+        statusPanel.setMaximumSize(new java.awt.Dimension(800, 100));
+        statusPanel.setMinimumSize(new java.awt.Dimension(800, 100));
         statusPanel.setName("statusPanel"); // NOI18N
         statusPanel.setPreferredSize(new java.awt.Dimension(800, 100));
 
