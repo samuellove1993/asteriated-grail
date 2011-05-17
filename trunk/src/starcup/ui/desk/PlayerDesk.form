@@ -2,12 +2,6 @@
 
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <NonVisualComponents>
-    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="jFormattedTextField1.text"/>
-        <Property name="name" type="java.lang.String" value="jFormattedTextField1" noResource="true"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="cardImage">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="2"/>
@@ -17,10 +11,6 @@
         <Property name="verticalAlignment" type="int" value="3"/>
         <Property name="name" type="java.lang.String" value="cardImage" noResource="true"/>
       </Properties>
-      <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cardImageMouseClicked"/>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cardImageMouseEntered"/>
-      </Events>
     </Component>
   </NonVisualComponents>
   <Properties>
