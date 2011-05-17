@@ -29,7 +29,7 @@ public class PlayerDesk extends javax.swing.JPanel {
     public void display() {
         for (int i = 0; i < player.getCardLimit(); i++) {
             Card card = new Card();
-            jPanel2.add(card);
+            handDeckPanel.add(card);
             this.revalidate();
         }
     }
@@ -52,17 +52,23 @@ public class PlayerDesk extends javax.swing.JPanel {
     private void initComponents() {
 
         cardImage = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        publicPanel = new javax.swing.JPanel();
+        playerPanel = new javax.swing.JPanel();
+        handDeckPanel = new javax.swing.JPanel();
 
         cardImage.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(starcup.StarCupApp.class).getContext().getResourceMap(PlayerDesk.class);
         cardImage.setIcon(resourceMap.getIcon("cardImage.icon")); // NOI18N
+        cardImage.setText(resourceMap.getString("cardImage.text")); // NOI18N
+        cardImage.setToolTipText(resourceMap.getString("cardImage.toolTipText")); // NOI18N
         cardImage.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         cardImage.setName("cardImage"); // NOI18N
         cardImage.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cardImageMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cardImageMouseEntered(evt);
             }
         });
 
@@ -72,29 +78,42 @@ public class PlayerDesk extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(800, 600));
         setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jPanel1.setBackground(resourceMap.getColor("jPanel1.background")); // NOI18N
-        jPanel1.setMaximumSize(new java.awt.Dimension(800, 200));
-        jPanel1.setMinimumSize(new java.awt.Dimension(800, 200));
-        jPanel1.setName("jPanel1"); // NOI18N
-        jPanel1.setPreferredSize(new java.awt.Dimension(800, 200));
-        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
-        add(jPanel1);
+        publicPanel.setBackground(resourceMap.getColor("publicPanel.background")); // NOI18N
+        publicPanel.setMaximumSize(new java.awt.Dimension(800, 270));
+        publicPanel.setMinimumSize(new java.awt.Dimension(800, 270));
+        publicPanel.setName("publicPanel"); // NOI18N
+        publicPanel.setPreferredSize(new java.awt.Dimension(800, 270));
+        publicPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        add(publicPanel);
 
-        jPanel2.setBackground(resourceMap.getColor("jPanel2.background")); // NOI18N
-        jPanel2.setMaximumSize(new java.awt.Dimension(800, 400));
-        jPanel2.setMinimumSize(new java.awt.Dimension(800, 400));
-        jPanel2.setName("jPanel2"); // NOI18N
-        jPanel2.setPreferredSize(new java.awt.Dimension(800, 400));
-        add(jPanel2);
+        playerPanel.setBackground(resourceMap.getColor("playerPanel.background")); // NOI18N
+        playerPanel.setMaximumSize(new java.awt.Dimension(800, 300));
+        playerPanel.setMinimumSize(new java.awt.Dimension(800, 300));
+        playerPanel.setName("playerPanel"); // NOI18N
+        playerPanel.setPreferredSize(new java.awt.Dimension(800, 300));
+        playerPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 0));
+
+        handDeckPanel.setMaximumSize(new java.awt.Dimension(600, 300));
+        handDeckPanel.setMinimumSize(new java.awt.Dimension(600, 300));
+        handDeckPanel.setName("handDeckPanel"); // NOI18N
+        handDeckPanel.setPreferredSize(new java.awt.Dimension(600, 300));
+        playerPanel.add(handDeckPanel);
+
+        add(playerPanel);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cardImageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cardImageMouseClicked
-        // TODO add your handling code here:
+    
     }//GEN-LAST:event_cardImageMouseClicked
+
+    private void cardImageMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cardImageMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cardImageMouseEntered
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel cardImage;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel handDeckPanel;
+    private javax.swing.JPanel playerPanel;
+    private javax.swing.JPanel publicPanel;
     // End of variables declaration//GEN-END:variables
 }

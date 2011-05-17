@@ -27,7 +27,8 @@ public class StarCupView extends FrameView {
         super(app);
 
         initComponents();
-
+        /*turn resizeable off*/
+        this.getFrame().setResizable(false);
         // status bar initialization - message timeout, idle icon and busy animation, etc
         ResourceMap resourceMap = getResourceMap();
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
@@ -123,20 +124,24 @@ public class StarCupView extends FrameView {
         statusAnimationLabel = new javax.swing.JLabel();
         progressBar = new javax.swing.JProgressBar();
 
-        mainPanel.setMaximumSize(new java.awt.Dimension(800, 800));
-        mainPanel.setMinimumSize(new java.awt.Dimension(800, 800));
+        mainPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        mainPanel.setMaximumSize(new java.awt.Dimension(800, 570));
+        mainPanel.setMinimumSize(new java.awt.Dimension(800, 570));
         mainPanel.setName("mainPanel"); // NOI18N
-        mainPanel.setPreferredSize(new java.awt.Dimension(800, 800));
+        mainPanel.setPreferredSize(new java.awt.Dimension(800, 570));
+        mainPanel.setRequestFocusEnabled(false);
         mainPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 0));
 
-        playerDesk1.setMaximumSize(new java.awt.Dimension(800, 500));
-        playerDesk1.setMinimumSize(new java.awt.Dimension(800, 500));
+        playerDesk1.setMaximumSize(new java.awt.Dimension(800, 550));
+        playerDesk1.setMinimumSize(new java.awt.Dimension(800, 550));
         playerDesk1.setName("playerDesk1"); // NOI18N
-        playerDesk1.setPreferredSize(new java.awt.Dimension(800, 500));
+        playerDesk1.setPreferredSize(new java.awt.Dimension(800, 550));
         mainPanel.add(playerDesk1);
 
-        menuBar.setMaximumSize(new java.awt.Dimension(800, 32769));
+        menuBar.setMaximumSize(new java.awt.Dimension(800, 30));
+        menuBar.setMinimumSize(new java.awt.Dimension(800, 30));
         menuBar.setName("menuBar"); // NOI18N
+        menuBar.setPreferredSize(new java.awt.Dimension(800, 30));
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(starcup.StarCupApp.class).getContext().getResourceMap(StarCupView.class);
         fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
@@ -167,10 +172,10 @@ public class StarCupView extends FrameView {
 
         menuBar.add(helpMenu);
 
-        statusPanel.setMaximumSize(new java.awt.Dimension(800, 100));
-        statusPanel.setMinimumSize(new java.awt.Dimension(800, 100));
+        statusPanel.setMaximumSize(new java.awt.Dimension(800, 10));
+        statusPanel.setMinimumSize(new java.awt.Dimension(800, 10));
         statusPanel.setName("statusPanel"); // NOI18N
-        statusPanel.setPreferredSize(new java.awt.Dimension(800, 100));
+        statusPanel.setPreferredSize(new java.awt.Dimension(800, 10));
 
         statusPanelSeparator.setName("statusPanelSeparator"); // NOI18N
 
@@ -214,7 +219,6 @@ public class StarCupView extends FrameView {
 
         setComponent(mainPanel);
         setMenuBar(menuBar);
-        setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -234,6 +238,6 @@ public class StarCupView extends FrameView {
     private final Icon idleIcon;
     private final Icon[] busyIcons = new Icon[15];
     private int busyIconIndex = 0;
-
+    
     private JDialog aboutBox;
 }
