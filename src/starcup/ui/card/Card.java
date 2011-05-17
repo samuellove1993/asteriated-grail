@@ -16,7 +16,7 @@ public class Card extends JLabel implements starcup.core.component.Card {
 
     private boolean seleceted = false;
     private int width = 127;
-    private int height = 200;
+    private int height = 220;
 
     public Card() {
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(starcup.StarCupApp.class).getContext().getResourceMap(PlayerDesk.class);
