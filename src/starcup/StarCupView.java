@@ -98,7 +98,7 @@ public class StarCupView extends FrameView {
        Game game=Game.getInstance();
        Player player = game.getPlayers().get(0);
        this.playerDesk1.setPlayer(player);
-       this.playerDesk1.display();
+       this.playerDesk1.displayCards();
    }
     /** This method is called from within the constructor to
      * initialize the form.
