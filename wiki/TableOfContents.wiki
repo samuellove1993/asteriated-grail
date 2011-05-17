@@ -1,3 +1,2 @@
 #labels Phase-Requirements
-#目录
   * [game_introduction 游戏基本介绍]
