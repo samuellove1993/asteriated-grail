@@ -6,6 +6,7 @@ package starcup.core.game;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.commons.logging.LogFactory;
 
 /**
  *
@@ -14,7 +15,9 @@ import java.util.List;
 public class Game {
 
     private List<Player> players = new ArrayList();
+    private List<Team> teams = new ArrayList();
     private static Game game;
+    private static org.apache.commons.logging.Log logger = LogFactory.getLog(Game.class);
 
     private Game() {
         Player play1 = new Player();

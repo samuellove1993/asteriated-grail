@@ -15,6 +15,8 @@ import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import starcup.core.game.Game;
 import starcup.core.game.Player;
 import starcup.ui.card.JCard;
@@ -25,6 +27,7 @@ import starcup.ui.card.JCard;
 public class StarCupView extends FrameView {
     /*行动选择結果*/
 
+    private static Log logger = LogFactory.getLog(StarCupView.class);
     static int ACTION_PLAY = 0;
     static int ACTION_BUY = 1;
     static int ACTION_COMPOSE = 2;
@@ -125,7 +128,7 @@ public class StarCupView extends FrameView {
             for (int i = 0; i < 3; i++) {
                 final JCard card = new JCard();
                 player.drawCard(card);
-                System.out.println("draw card" + i);
+                logger.info("draw card" + i);
             }
             this.playerDesk1.setPlayer(player);
             this.playerDesk1.displayCards();
