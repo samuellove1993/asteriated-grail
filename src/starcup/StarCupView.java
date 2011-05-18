@@ -1,7 +1,6 @@
 /*
  * StarCupView.java
  */
-
 package starcup;
 
 import org.jdesktop.application.Action;
@@ -15,13 +14,21 @@ import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import starcup.core.game.Game;
 import starcup.core.game.Player;
+import starcup.ui.card.JCard;
 
 /**
  * The application's main frame.
  */
 public class StarCupView extends FrameView {
+    /*行动选择結果*/
+
+    static int ACTION_PLAY = 0;
+    static int ACTION_BUY = 1;
+    static int ACTION_COMPOSE = 2;
+    static int ACTION_EXTRACT = 3;
 
     public StarCupView(SingleFrameApplication app) {
         super(app);
@@ -33,6 +40,7 @@ public class StarCupView extends FrameView {
         ResourceMap resourceMap = getResourceMap();
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
         messageTimer = new Timer(messageTimeout, new ActionListener() {
+
             public void actionPerformed(ActionEvent e) {
                 statusMessageLabel.setText("");
             }
@@ -43,6 +51,7 @@ public class StarCupView extends FrameView {
             busyIcons[i] = resourceMap.getIcon("StatusBar.busyIcons[" + i + "]");
         }
         busyIconTimer = new Timer(busyAnimationRate, new ActionListener() {
+
             public void actionPerformed(ActionEvent e) {
                 busyIconIndex = (busyIconIndex + 1) % busyIcons.length;
                 statusAnimationLabel.setIcon(busyIcons[busyIconIndex]);
@@ -55,6 +64,7 @@ public class StarCupView extends FrameView {
         // connecting action tasks to status bar via TaskMonitor
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
         taskMonitor.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 String propertyName = evt.getPropertyName();
                 if ("started".equals(propertyName)) {
@@ -71,11 +81,11 @@ public class StarCupView extends FrameView {
                     progressBar.setVisible(false);
                     progressBar.setValue(0);
                 } else if ("message".equals(propertyName)) {
-                    String text = (String)(evt.getNewValue());
+                    String text = (String) (evt.getNewValue());
                     statusMessageLabel.setText((text == null) ? "" : text);
                     messageTimer.restart();
                 } else if ("progress".equals(propertyName)) {
-                    int value = (Integer)(evt.getNewValue());
+                    int value = (Integer) (evt.getNewValue());
                     progressBar.setVisible(true);
                     progressBar.setIndeterminate(false);
                     progressBar.setValue(value);
@@ -93,13 +103,35 @@ public class StarCupView extends FrameView {
         }
         StarCupApp.getApplication().show(aboutBox);
     }
-   @Action
-   public void createNewGame(){
-       Game game=Game.getInstance();
-       Player player = game.getPlayers().get(0);
-       this.playerDesk1.setPlayer(player);
-       this.playerDesk1.displayCards();
-   }
+
+    /**显示行动选择条*/
+    public int showTurnActionBox() {
+        Object[] options = {"攻击/魔法", "购买", "合成", "提炼"};
+        return JOptionPane.showOptionDialog(StarCupApp.getApplication().getMainFrame(),
+                "选择行动类型 ", "回合开始",
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[0]);
+    }
+
+    @Action
+    public void createNewGame() {
+        Game game = Game.getInstance();
+        Player player = game.getPlayers().get(0);
+        int option = this.showTurnActionBox();
+        if (option == ACTION_BUY) {
+            for (int i = 0; i < 3; i++) {
+                final JCard card = new JCard();
+                player.drawCard(card);
+                System.out.println("draw card" + i);
+            }
+            this.playerDesk1.setPlayer(player);
+            this.playerDesk1.displayCards();
+        }
+    }
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -123,6 +155,11 @@ public class StarCupView extends FrameView {
         statusMessageLabel = new javax.swing.JLabel();
         statusAnimationLabel = new javax.swing.JLabel();
         progressBar = new javax.swing.JProgressBar();
+        actionBox = new javax.swing.JDialog();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         mainPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         mainPanel.setMaximumSize(new java.awt.Dimension(800, 570));
@@ -217,11 +254,56 @@ public class StarCupView extends FrameView {
                 .addGap(3, 3, 3))
         );
 
+        actionBox.setName("actionBox"); // NOI18N
+
+        jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
+        jButton1.setName("jButton1"); // NOI18N
+
+        jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
+        jButton2.setName("jButton2"); // NOI18N
+
+        jButton3.setText(resourceMap.getString("jButton3.text")); // NOI18N
+        jButton3.setName("jButton3"); // NOI18N
+
+        jButton4.setText(resourceMap.getString("jButton4.text")); // NOI18N
+        jButton4.setName("jButton4"); // NOI18N
+
+        javax.swing.GroupLayout actionBoxLayout = new javax.swing.GroupLayout(actionBox.getContentPane());
+        actionBox.getContentPane().setLayout(actionBoxLayout);
+        actionBoxLayout.setHorizontalGroup(
+            actionBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(actionBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        actionBoxLayout.setVerticalGroup(
+            actionBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(actionBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(actionBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         setComponent(mainPanel);
         setMenuBar(menuBar);
     }// </editor-fold>//GEN-END:initComponents
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog actionBox;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPanel mainPanel;
@@ -232,12 +314,10 @@ public class StarCupView extends FrameView {
     private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;
     // End of variables declaration//GEN-END:variables
-
     private final Timer messageTimer;
     private final Timer busyIconTimer;
     private final Icon idleIcon;
     private final Icon[] busyIcons = new Icon[15];
     private int busyIconIndex = 0;
-    
     private JDialog aboutBox;
 }

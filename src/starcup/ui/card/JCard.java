@@ -6,7 +6,6 @@ package starcup.ui.card;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 /**
  *
@@ -21,7 +20,6 @@ public class JCard extends JLabel implements starcup.core.component.Card {
     public final static int CARD_HEIGHT = 220;
     /*图片路径*/
     private String imageUrl = "src/starcup/resources/card/character.jpg";
-    private JPanel locatePanel;
 
     public JCard() {
         this.setIcon(new ImageIcon(imageUrl));
@@ -29,18 +27,6 @@ public class JCard extends JLabel implements starcup.core.component.Card {
         this.setCardSize(JCard.CARD_WIDTH, JCard.CARD_HEIGHT);
         this.setName("cardImage"); // NOI18N
         this.setToolTipText("<html>卡片名称<br>基本描述</html>");
-        this.addMouseListener(new java.awt.event.MouseAdapter() {
-
-            @Override
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                onPlay();
-            }
-
-            @Override
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                onClicked();
-            }
-        });
     }
 
     private void setCardSize(int x, int y) {
@@ -49,27 +35,11 @@ public class JCard extends JLabel implements starcup.core.component.Card {
         this.setPreferredSize(new java.awt.Dimension(x, y));
     }
 
-    public void onPlay() {
-        this.locatePanel.add(this);
+    public boolean isSeleceted() {
+        return seleceted;
     }
 
-    public void onClicked() {
-        if (this.seleceted) {
-            this.seleceted = false;
-            this.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        } else {
-            this.seleceted = true;
-            this.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        }
-
-    }
-
-    public JPanel getLocatePanel() {
-        return locatePanel;
-    }
-
-    public void setLocatePanel(JPanel locatePanel) {
-        this.locatePanel = locatePanel;
+    public void setSeleceted(boolean seleceted) {
+        this.seleceted = seleceted;
     }
 }

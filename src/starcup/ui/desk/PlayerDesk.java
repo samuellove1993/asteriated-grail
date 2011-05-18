@@ -18,7 +18,7 @@ import starcup.ui.card.JCard;
  * @author Akira.Pan
  */
 public class PlayerDesk extends javax.swing.JPanel {
-
+    
     private Player player;
 
     /** Creates new form PlayerDesk */
@@ -28,29 +28,50 @@ public class PlayerDesk extends javax.swing.JPanel {
 
     /**刷新手牌的排列局部*/
     private void refleshCardLayout() {
-        int count = 0;
+        if (this.getPlayer().getHandCards().isEmpty()) {
+            return;
+        }
         int widthSpace = this.getWidth() / this.getPlayer().getHandCards().size();
         widthSpace = (widthSpace > JCard.CARD_WIDTH) ? JCard.CARD_WIDTH : widthSpace;
         this.handDeckPanel.removeAll();
         for (int i = 0; i < this.getPlayer().getHandCards().size(); i++) {
-            this.handDeckPanel.add((JCard) this.getPlayer().getHandCards().get(i), new org.netbeans.lib.awtextra.AbsoluteConstraints(i * 60, 50, -1, -1));
+            final JCard card = (JCard) this.getPlayer().getHandCards().get(i);
+            this.handDeckPanel.add(card, new org.netbeans.lib.awtextra.AbsoluteConstraints(i * widthSpace, 50, -1, -1));
+            card.addMouseListener(new java.awt.event.MouseAdapter() {
+                
+                @Override
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    if (evt.getClickCount() == 1) {
+                        if (card.isSeleceted()) {
+                        } else {
+                        }
+                    } else if (evt.getClickCount() == 2) {
+                        playCard(card);
+                    }
+                    
+                }
+            });
+            
         }
     }
 
     /**显示现有玩家的所有手牌，按照手牌的数量调增其间距 */
     public void displayCards() {
-        for (int i = 0; i < player.getCardLimit(); i++) {
-            JCard card = new JCard();
-            this.player.drawCard(card);
-        }
         this.refleshCardLayout();
         this.revalidate();
     }
-
+    
+    private void playCard(JCard card) {
+        this.player.getHandCards().remove(card);
+        this.displayCards();
+        this.publicPanel.add(card);
+        
+    }
+    
     public Player getPlayer() {
         return player;
     }
-
+    
     public void setPlayer(Player player) {
         this.player = player;
     }
