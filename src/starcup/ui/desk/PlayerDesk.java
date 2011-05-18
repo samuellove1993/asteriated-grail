@@ -18,7 +18,7 @@ import starcup.ui.card.JCard;
  * @author Akira.Pan
  */
 public class PlayerDesk extends javax.swing.JPanel {
-    
+
     private Player player;
 
     /** Creates new form PlayerDesk */
@@ -38,7 +38,7 @@ public class PlayerDesk extends javax.swing.JPanel {
             final JCard card = (JCard) this.getPlayer().getHandCards().get(i);
             this.handDeckPanel.add(card, new org.netbeans.lib.awtextra.AbsoluteConstraints(i * widthSpace, 50, -1, -1));
             card.addMouseListener(new java.awt.event.MouseAdapter() {
-                
+
                 @Override
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
                     if (evt.getClickCount() == 1) {
@@ -48,10 +48,10 @@ public class PlayerDesk extends javax.swing.JPanel {
                     } else if (evt.getClickCount() == 2) {
                         playCard(card);
                     }
-                    
+
                 }
             });
-            
+
         }
     }
 
@@ -60,18 +60,18 @@ public class PlayerDesk extends javax.swing.JPanel {
         this.refleshCardLayout();
         this.revalidate();
     }
-    
+
     private void playCard(JCard card) {
         this.player.getHandCards().remove(card);
         this.displayCards();
         this.publicPanel.add(card);
-        
+
     }
-    
+
     public Player getPlayer() {
         return player;
     }
-    
+
     public void setPlayer(Player player) {
         this.player = player;
     }
