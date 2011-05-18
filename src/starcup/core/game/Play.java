@@ -4,8 +4,6 @@
  */
 package starcup.core.game;
 
-import starcup.core.component.Card;
-
 /**
  *
  * @author Administrator
