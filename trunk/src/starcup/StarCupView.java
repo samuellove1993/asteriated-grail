@@ -127,7 +127,7 @@ public class StarCupView extends FrameView {
         if (option == ACTION_BUY) {
             for (int i = 0; i < 3; i++) {
                 final JCard card = new JCard();
-                player.drawCard(card);
+                player.drawCard(card.getCard());
                 logger.info("draw card" + i);
             }
             this.playerDesk1.setPlayer(player);

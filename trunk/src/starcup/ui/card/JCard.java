@@ -6,13 +6,15 @@ package starcup.ui.card;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import starcup.core.game.Card;
 
 /**
  *
  * @author Akira.Pan
  */
-public class JCard extends JLabel implements starcup.core.component.Card {
-
+public class JCard extends JLabel {
+    /*所代表的卡牌的基本信息*/
+    private Card card;
     private boolean seleceted = false;
     /*默认宽度*/
     public final static int CARD_WIDTH = 127;
@@ -41,5 +43,13 @@ public class JCard extends JLabel implements starcup.core.component.Card {
 
     public void setSeleceted(boolean seleceted) {
         this.seleceted = seleceted;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
     }
 }
