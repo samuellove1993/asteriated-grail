@@ -4,6 +4,8 @@
  */
 package starcup.core.game;
 
+import starcup.core.game.card.Card;
+
 /**
  *
  * @author Akira.Pan

@@ -8,10 +8,6 @@ package starcup.core.game;
  *
  * @author Administrator
  */
-public interface Card {
-    /*卡牌名称*/
-
-    public String getName();
-    /*卡牌编号*/
-    public int getNo();
+public class NormalDeckManager {
+    
 }

@@ -4,6 +4,7 @@
  */
 package starcup.core.game;
 
+import starcup.core.game.card.IGame;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.logging.LogFactory;
@@ -12,8 +13,11 @@ import org.apache.commons.logging.LogFactory;
  *
  * @author Administrator
  */
-public class Game {
+public class Game implements IGame {
 
+    /**
+     * 
+     */
     private List<Player> players = new ArrayList();
     private List<Team> teams = new ArrayList();
     private static Game game;
@@ -23,7 +27,21 @@ public class Game {
         Player play1 = new Player();
         players.add(play1);
     }
-
+/**实现接口部分 START*/
+    /**
+     * 获取当前游戏实例 对外接口
+     * @return 
+     */
+    public IGame getGame() {
+        return Game.getInstance();
+    }
+/**实现接口部分 END*/
+    
+    
+    /**
+     * 获取当前游戏实例
+     * @return 
+     */
     public static Game getInstance() {
         if (game == null) {
             game = new Game();
