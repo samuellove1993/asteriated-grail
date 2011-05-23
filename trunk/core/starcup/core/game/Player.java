@@ -4,6 +4,7 @@
  */
 package starcup.core.game;
 
+import starcup.core.game.card.Card;
 import java.util.ArrayList;
 import java.util.List;
 
