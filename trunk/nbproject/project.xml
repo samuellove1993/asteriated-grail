@@ -10,6 +10,7 @@
                 <root id="src.dir"/>
             </source-roots>
             <test-roots>
+                <root id="test.core-test.dir" name="核心测试包"/>
                 <root id="test.src.dir"/>
             </test-roots>
         </data>
