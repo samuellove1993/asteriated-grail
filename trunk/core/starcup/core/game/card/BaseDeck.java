@@ -4,24 +4,23 @@
  */
 package starcup.core.game.card;
 
-import starcup.core.game.card.Card;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 基本的套牌
- * @author Akira.Pan
+ * 基本Deck类实现大部分共有操作
+ * @author Administrator
  */
-public class Deck {
+public abstract class BaseDeck {
     /*游戏使用的套牌组合*/
 
-    private List<Card> allCards = new ArrayList<Card>();
+    private List<ICard> allCards = new ArrayList<ICard>();
 
-    public List<Card> getAllCards() {
+    public List<ICard> getAllCards() {
         return allCards;
     }
 
-    public void setAllCards(List<Card> allCards) {
+    public void setAllCards(List<ICard> allCards) {
         this.allCards = allCards;
     }
 }

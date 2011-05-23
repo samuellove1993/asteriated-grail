@@ -4,7 +4,7 @@
  */
 package starcup.core.game;
 
-import starcup.core.game.card.Card;
+import starcup.core.game.card.ICard;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,10 +17,10 @@ public class Player implements Play {
 
     private int cardLimit = 6;
     /*手牌*/
-    private List<Card> handCards;
+    private List<ICard> handCards;
 
     public Player() {
-        handCards = new ArrayList<Card>(10);
+        handCards = new ArrayList<ICard>(10);
     }
 
     public void buy() {
@@ -31,7 +31,7 @@ public class Player implements Play {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void drawCard(Card card) {
+    public void drawCard(ICard card) {
         this.handCards.add(card);
     }
 
@@ -39,7 +39,7 @@ public class Player implements Play {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void playCard(Card card) {
+    public void playCard(ICard card) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -51,11 +51,11 @@ public class Player implements Play {
         this.cardLimit = cardLimit;
     }
 
-    public List<Card> getHandCards() {
+    public List<ICard> getHandCards() {
         return handCards;
     }
 
-    public void setHandCards(List<Card> handCards) {
+    public void setHandCards(List<ICard> handCards) {
         this.handCards = handCards;
     }
 }

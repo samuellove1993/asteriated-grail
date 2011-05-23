@@ -8,7 +8,7 @@ package starcup.core.game.card;
  *
  * @author Administrator
  */
-public interface Card {
+public interface ICard {
     /*卡牌名称*/
 
     public String getName();

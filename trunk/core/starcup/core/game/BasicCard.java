@@ -4,13 +4,13 @@
  */
 package starcup.core.game;
 
-import starcup.core.game.card.Card;
+import starcup.core.game.card.ICard;
 
 /**
  *
  * @author Akira.Pan
  */
-public class BasicCard implements Card {
+public class BasicCard implements ICard {
 
     private int no;
     private String name;
