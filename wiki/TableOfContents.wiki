@@ -1,2 +1,2 @@
 #labels Phase-Requirements
-  * [game_introduction 游戏基本介绍]
+  * [ProjectBasicintroduction 项目基本介绍]
