@@ -4,7 +4,7 @@
  */
 package starcup.core.game;
 
-import starcup.core.game.card.Card;
+import starcup.core.game.card.ICard;
 
 /**
  *
@@ -12,9 +12,9 @@ import starcup.core.game.card.Card;
  */
 public interface Play {
     /**玩家摸一张牌*/
-    void drawCard(Card card);
+    void drawCard(ICard card);
     /**玩家打出一张牌*/
-    void playCard(Card card);
+    void playCard(ICard card);
     /**执行购买动作*/
     void buy();
     /**执行合成动作*/
