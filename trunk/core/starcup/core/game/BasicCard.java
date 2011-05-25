@@ -14,6 +14,9 @@ public class BasicCard implements ICard {
 
     private String no;
     private String name;
+    private String attr;
+    private String type;
+    private String skillType;
 
     public String getName() {
         return this.name;
@@ -21,5 +24,13 @@ public class BasicCard implements ICard {
 
     public String getNo() {
         return this.no;
+    }
+
+    public String getAttribute() {
+        return this.attr;
+    }
+
+    public String getType() {
+        return this.type;
     }
 }
