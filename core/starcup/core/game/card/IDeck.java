@@ -13,6 +13,14 @@ import java.util.List;
 public interface IDeck {
 
     /**
+     * 初始化一套卡牌;s
+     */
+    public void init();
+    /**
+     * 获取牌堆当前大小
+     */
+    public int getSize();
+    /**
      * 获取当前所有的卡牌列表
      * @return 
      */

@@ -12,14 +12,14 @@ import starcup.core.game.card.ICard;
  */
 public class BasicCard implements ICard {
 
-    private int no;
+    private String no;
     private String name;
 
     public String getName() {
         return this.name;
     }
 
-    public int getNo() {
+    public String getNo() {
         return this.no;
     }
 }
