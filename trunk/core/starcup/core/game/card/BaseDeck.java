@@ -11,7 +11,7 @@ import java.util.List;
  * 基本Deck类实现大部分共有操作
  * @author Administrator
  */
-public abstract class BaseDeck {
+public abstract class BaseDeck implements IDeck{
     /*游戏使用的套牌组合*/
 
     private List<ICard> allCards = new ArrayList<ICard>();

@@ -13,5 +13,10 @@ public interface ICard {
 
     public String getName();
     /*卡牌编号*/
-    public int getNo();
+
+    public String getNo();
+
+    public String getType();
+
+    public String getAttribute();
 }
